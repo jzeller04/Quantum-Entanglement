@@ -12,8 +12,8 @@ Justin Zeller
 David Withaeger
 - Composer/Auxillary Dev
 
-your name here
--
+Paolo Selerio
+- Developer
 
 your name here
 -
