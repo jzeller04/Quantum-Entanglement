@@ -19,5 +19,6 @@ Paolo Selerio
 - Game Design
 
 Lauren Gray
-- Illustration
 - Game Design
+- Character Art
+- Environment Art
