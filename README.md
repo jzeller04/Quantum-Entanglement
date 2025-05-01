@@ -7,8 +7,8 @@ A game where youre a small particle on the planck scale trying to send messages 
 Justin Zeller
 - Team Lead
 
-your name here
--
+David Withaeger
+-Composer/Auxillary Dev
 
 your name here
 -
