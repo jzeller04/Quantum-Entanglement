@@ -7,15 +7,17 @@ A game where youre a small particle on the planck scale trying to send messages 
 Justin Zeller
 - Team Lead
 - Development
-- Game Design
-- gay
+- Game Desig
 
 David Withaeger
 - Composer
 - Auxillary Developer
+- Game Design
 
 Paolo Selerio
 - Developer
+- Game Design
 
 Lauren Gray
 - Artist
+- Game Design
