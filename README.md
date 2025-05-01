@@ -17,4 +17,4 @@ Paolo Selerio
 - Developer
 
 Lauren Gray
--Artist
+- Artist
