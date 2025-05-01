@@ -8,7 +8,7 @@ Justin Zeller
 - Team Lead
 
 David Withaeger
--Composer/Auxillary Dev
+- Composer/Auxillary Dev
 
 your name here
 -
