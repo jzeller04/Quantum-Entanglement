@@ -16,5 +16,5 @@ David Withaeger
 Paolo Selerio
 - Developer
 
-your name here
--
+Lauren Gray
+-Artist
