@@ -10,7 +10,8 @@ Justin Zeller
 - Game Design
 
 David Withaeger
-- Composer/Auxillary Dev
+- Composer
+- Auxillary Developer
 
 Paolo Selerio
 - Developer
