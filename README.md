@@ -15,7 +15,7 @@ David Withaeger
 - Game Design
 
 Paolo Selerio
-- Developer
+- Development
 - Game Design
 
 Lauren Gray
