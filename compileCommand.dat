@@ -1,0 +1,1 @@
+g++ main.cpp src/event/event.cpp src/event/testEvent.cpp src/listener/testListener.cpp .\src\listener\listener.cpp .\src\bus\eventBus.cpp .\src\listener\screenManager.cpp .\src\screen\mainMenuScreen.cpp -IC:/Libraries/SFML-3.0.0/include -LC:/Libraries/SFML-3.0.0/lib -lsfml-graphics -lsfml-window -lsfml-system -Iinclude
