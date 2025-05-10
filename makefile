@@ -13,10 +13,12 @@ SRC = main.cpp \
       src/listener/listener.cpp \
       src/bus/eventBus.cpp \
       src/listener/screenManager.cpp \
-      src/screen/mainMenuScreen.cpp \
+      src/screen/menuScreen.cpp \
       src/screen/gameScreen.cpp \
       src/screen/screen.cpp \
-      src/screen/animatedScreen.cpp
+      src/screen/animatedScreen.cpp \
+      src/ui/button.cpp \
+      src/util/util.cpp
 
 TARGET = engine.exe
 

@@ -5,7 +5,7 @@
 #include "bus/eventBus.hpp"
 #include <SFML/Graphics.hpp>
 #include <listener/screenManager.hpp>
-#include "screen/mainMenuScreen.hpp"
+#include "screen/menuScreen.hpp"
 #include <SFML/Window.hpp>
 #include <screen/gameScreen.hpp>
 #include <SFML/Graphics.hpp>
@@ -19,8 +19,10 @@ int main()
 
     auto screenManager = std::make_shared<ScreenManager>("Screen Manager");
     bus.registerListener(screenManager);
-    std::shared_ptr<Screen> mainMenu = std::make_shared<MainMenuScreen>();
-    std::shared_ptr<AnimatedScreen> pauseScreen = std::make_shared<AnimatedScreen>(SCREEN_LABEL::PAUSE_MENU, "./assets/settings");
+    std::shared_ptr<MenuScreen> mainMenu = std::make_shared<MenuScreen>();
+    std::shared_ptr<AnimatedScreen> pauseScreen = std::make_shared<AnimatedScreen>(SCREEN_LABEL::PAUSE_MENU, "./assets/settings", 0.01);
+
+    mainMenu->createAndAddButtonToScreen("testButton.png", "Test Button!", 100, 100, 1, 1, 1, std::make_shared<EventBus>(bus));
 
     screenManager->registerScreen(mainMenu);
     screenManager->registerScreen(pauseScreen);
