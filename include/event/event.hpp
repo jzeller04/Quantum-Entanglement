@@ -4,7 +4,8 @@
 enum class EventType
 {
     SCREEN_CHANGE,
-    REGISTER
+    REGISTER,
+    SOUNDEVENT
 };
 
 enum class EventTrigger
@@ -24,8 +25,8 @@ public:
     EventTrigger trigger;
     EventType type;
 
-    virtual EventType getType() const = 0;
-    virtual EventTrigger getTrigger() const = 0;
+    virtual EventType getType() const {return this->type;};
+    virtual EventTrigger getTrigger() const {return this->trigger;};
 
 };
 

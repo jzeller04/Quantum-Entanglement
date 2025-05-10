@@ -9,6 +9,7 @@
 #include <SFML/Window.hpp>
 #include <screen/gameScreen.hpp>
 #include <SFML/Graphics.hpp>
+#include "screen/animatedScreen.hpp"
 
 int main()
 {
@@ -19,15 +20,19 @@ int main()
     auto screenManager = std::make_shared<ScreenManager>("Screen Manager");
     bus.registerListener(screenManager);
     std::shared_ptr<Screen> mainMenu = std::make_shared<MainMenuScreen>();
+    std::shared_ptr<AnimatedScreen> pauseScreen = std::make_shared<AnimatedScreen>(SCREEN_LABEL::PAUSE_MENU, "./assets/settings");
 
     screenManager->registerScreen(mainMenu);
+    screenManager->registerScreen(pauseScreen);
 
     screenManager->setScreen(mainMenu);
-    // sf::CircleShape shape(100.f);
-    // shape.setFillColor(sf::Color::Green);
+
     bool leftClickHandle = true; // this could most definetely be a handler class of some kind. Im going to need more than just one handler.
+    sf::Clock clock;
     while (window.isOpen())
     {
+        float dt = clock.restart().asSeconds();
+        //std::cout << (int)dt.asSeconds() << std::endl;
         while (const std::optional event = window.pollEvent())
         {
             if (event->is<sf::Event::Closed>())
@@ -37,7 +42,7 @@ int main()
 
         window.clear();
         screenManager->renderScreen(window);
-        screenManager->updateScreen(1.0f/60.0f);
+        screenManager->updateScreen(dt);
         if(sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && leftClickHandle)
         {
             auto screenChangeEvent = std::make_shared<TestEvent>(EventTrigger::LEFT_CLICK, EventType::SCREEN_CHANGE);
@@ -46,7 +51,7 @@ int main()
             if(screenManager->getCurrentScreen() == mainMenu)
             {
                 auto gameMenu = std::make_shared<GameScreen>();
-                screenManager->setNextScreenAndChange(gameMenu);
+                screenManager->setNextScreenByLabel(SCREEN_LABEL::PAUSE_MENU);
             }
             if(screenManager->getCurrentScreen() != mainMenu)
                 screenManager->setNextScreenByLabel(SCREEN_LABEL::MAIN_MENU);

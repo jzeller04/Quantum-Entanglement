@@ -10,6 +10,7 @@ enum class SCREEN_LABEL
     MAIN_MENU,
     PAUSE_MENU,
     SETTINGS_MENU,
+    NO_LABEL
 
 };
 

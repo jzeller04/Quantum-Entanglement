@@ -18,6 +18,7 @@ void GameScreen::onExit()
 
 void GameScreen::update(float dt)
 {
+    
 }
 
 void GameScreen::renderWindow(sf::RenderWindow &window)

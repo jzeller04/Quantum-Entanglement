@@ -1,6 +1,7 @@
 #pragma once
 #include "listener/listener.hpp"
-
+#include <vector>
+#include <SFML/Audio.hpp>
 class TestListener : public EventListener
 {
 private:
@@ -11,3 +12,4 @@ public:
     void onEventTrigger(const std::shared_ptr<Event>& event) override;
     bool shouldActOnEvent(const std::shared_ptr<Event> &event) const override;
 };
+

@@ -15,7 +15,8 @@ SRC = main.cpp \
       src/listener/screenManager.cpp \
       src/screen/mainMenuScreen.cpp \
       src/screen/gameScreen.cpp \
-      src/screen/screen.cpp
+      src/screen/screen.cpp \
+      src/screen/animatedScreen.cpp
 
 TARGET = engine.exe
 
