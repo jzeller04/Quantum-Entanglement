@@ -13,7 +13,8 @@ David Withaeger
 - Composer
 - Auxillary Developer
 - Game Design
-
+- Audio Design
+  
 Paolo Selerio
 - Development
 - Game Design
