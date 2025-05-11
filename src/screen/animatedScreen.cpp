@@ -1,7 +1,8 @@
 #include "screen/animatedScreen.hpp"
 sf::Texture temp("./assets/pause/pause1.png");
-AnimatedScreen::AnimatedScreen(SCREEN_LABEL label, const std::string filePth, float frameTime) : Screen(label), m_frameDuration(frameTime), m_backgroundSprite(temp)
+AnimatedScreen::AnimatedScreen(SCREEN_LABEL label, const std::string filePth, float frameTime, std::shared_ptr<sf::RenderWindow> window) : Screen(label), m_frameDuration(frameTime), m_backgroundSprite(temp)
 {
+    this->window = window;
     loadTextures(filePth);
     if (!m_textures.empty())
         m_backgroundSprite.setTexture(*m_textures[0]);  // Set after textures are loaded
@@ -57,9 +58,9 @@ void AnimatedScreen::update(float dt)
     }
 }
 
-void AnimatedScreen::renderWindow(sf::RenderWindow &window)
+void AnimatedScreen::renderWindow()
 {
-    window.draw(m_backgroundSprite);
+    window->draw(m_backgroundSprite);
 }
 
 void AnimatedScreen::handleEvent(const std::shared_ptr<Event> &event)

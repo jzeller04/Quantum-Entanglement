@@ -17,16 +17,18 @@ private:
     std::shared_ptr<EventBus> bus;
     std::shared_ptr<sf::RenderWindow> window;
 
+
     float m_xPos;
     float m_yPos;
 
     void sendButtonEvent();
 public:
     // Button(std::string fileTexture, std::string buttonText = "");
-    Button(std::string fileTexture, std::string buttonText, float xPos, float yPos, float xSize, float ySize, float scale, std::shared_ptr<EventBus> bus);
+    Button(const std::string &fileTexture, const std::string &buttonText, float xPos, float yPos, float xSize, float ySize, float scale, std::shared_ptr<EventBus> bus, std::shared_ptr<sf::RenderWindow> window);
     void createButton(std::string fileTexture, std::string buttonText = "", float xPos = 0, float yPos = 0, float xSize = 0, float ySize = 0, float scale = 1);
     void drawButton();
     bool onLeftClick();
     bool onRightClick();
     void update();
+    void sendButtonScreenChangeEvent();
 };

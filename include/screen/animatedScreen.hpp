@@ -15,11 +15,11 @@ private:
     size_t m_currentFrame = 0;
     float m_frameDuration = 2.0f; // 2 seconds per frame
 public:
-    AnimatedScreen(SCREEN_LABEL label = SCREEN_LABEL::NO_LABEL, const std::string filePth = "", float frameTime = 2.0f);
+    AnimatedScreen(SCREEN_LABEL label = SCREEN_LABEL::NO_LABEL, const std::string filePth = "", float frameTime = 2.0f, std::shared_ptr<sf::RenderWindow> window = nullptr);
     void loadTextures(std::string fileDir);
     void onEnter() override;
     void onExit() override;
     void update(float dt) override;
-    void renderWindow(sf::RenderWindow &window) override;
+    void renderWindow() override;
     void handleEvent(const std::shared_ptr<Event> &event) override;
 };

@@ -17,8 +17,9 @@ void Button::drawButton()
     window->draw(buttonSprite);
     window->draw(buttonText);
 }
-Button::Button(std::string fileTexture, std::string buttonText, float xPos, float yPos, float xSize, float ySize, float scale, std::shared_ptr<EventBus> bus) : buttonTexture(qe::textureFromString(fileTexture)), buttonSprite(buttonTexture), buttonText(myFont)
+Button::Button(const std::string &fileTexture, const std::string &buttonText, float xPos, float yPos, float xSize, float ySize, float scale, std::shared_ptr<EventBus> bus, std::shared_ptr<sf::RenderWindow> window) : buttonTexture(qe::textureFromString(fileTexture)), buttonSprite(buttonTexture), buttonText(myFont)
 {
+    this->window = window;
     this->bus = bus;
     this->buttonSprite.setTexture(buttonTexture);
     this->buttonText.setString(buttonText);
@@ -37,4 +38,13 @@ bool Button::onLeftClick()
 void Button::sendButtonEvent()
 {
     bus->queueEvent(std::make_shared<TestEvent>(EventTrigger::LEFT_CLICK, EventType::SCREEN_CHANGE));
+}
+void Button::sendButtonScreenChangeEvent()
+{
+    bus->queueEvent(std::make_shared<TestEvent>(EventTrigger::LEFT_CLICK, EventType::SCREEN_CHANGE));
+}
+void Button::update()
+{
+    if(this->onLeftClick())
+        this->sendButtonScreenChangeEvent();
 }

@@ -38,10 +38,10 @@ void ScreenManager::updateScreen(float dt)
     currentScreen->update(dt);
 }
 
-void ScreenManager::renderScreen(sf::RenderWindow &window)
+void ScreenManager::renderScreen()
 {
     if(currentScreen)
-        currentScreen->renderWindow(window);
+        currentScreen->renderWindow();
 }
 
 void ScreenManager::changeScreenToNext()

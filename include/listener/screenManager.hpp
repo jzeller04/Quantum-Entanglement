@@ -18,7 +18,7 @@ public:
     //only use on init.
     void setScreen(std::shared_ptr<Screen> screen);
     void updateScreen(float dt);
-    void renderScreen(sf::RenderWindow &window);
+    void renderScreen();
     void changeScreenToNext();
     void onEventTrigger(const std::shared_ptr<Event> &event) override;
     bool shouldActOnEvent(const std::shared_ptr<Event>& event) const override;

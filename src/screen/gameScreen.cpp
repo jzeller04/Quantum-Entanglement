@@ -21,9 +21,9 @@ void GameScreen::update(float dt)
     
 }
 
-void GameScreen::renderWindow(sf::RenderWindow &window)
+void GameScreen::renderWindow()
 {
-    window.draw(backgroundSprite);
+    window->draw(backgroundSprite);
 }
 
 void GameScreen::handleEvent(const std::shared_ptr<Event> &event)

@@ -13,6 +13,6 @@ public:
     void onEnter() override;
     void onExit() override;
     void update(float dt) override;
-    void renderWindow(sf::RenderWindow &window) override;
+    void renderWindow() override;
     void handleEvent(const std::shared_ptr<Event> &event) override;
 };
