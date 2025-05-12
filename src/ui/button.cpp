@@ -14,11 +14,12 @@ void Button::createButton(std::string fileTexture, std::string buttonText, float
 
 void Button::drawButton()
 {
-    window->draw(buttonSprite);
     window->draw(buttonText);
+    window->draw(buttonSprite);
 }
-Button::Button(const std::string &fileTexture, const std::string &buttonText, float xPos, float yPos, float xSize, float ySize, float scale, std::shared_ptr<EventBus> bus, std::shared_ptr<sf::RenderWindow> window) : buttonTexture(qe::textureFromString(fileTexture)), buttonSprite(buttonTexture), buttonText(myFont)
+Button::Button(const std::string &fileTexture, const std::string &buttonText, float xPos, float yPos, float xSize, float ySize, float scale, std::shared_ptr<EventBus> bus, std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<Event> buttonEvent) : buttonTexture(qe::textureFromString(fileTexture)), buttonSprite(buttonTexture), buttonText(myFont)
 {
+    this->buttonEvent = buttonEvent;
     this->window = window;
     this->bus = bus;
     this->buttonSprite.setTexture(buttonTexture);
@@ -30,21 +31,31 @@ Button::Button(const std::string &fileTexture, const std::string &buttonText, fl
     buttonSprite.setScale({xSize, ySize});
 }
 
-bool Button::onLeftClick()
+bool Button::onLeftClick() // rename this shit
 {
     return qe::leftClick() && qe::withinBounds(buttonSprite.getPosition().x, buttonSprite.getPosition().x + buttonTexture.getSize().x, buttonSprite.getPosition().y, buttonSprite.getPosition().x + buttonTexture.getSize().y, *window);
 }
 
 void Button::sendButtonEvent()
 {
-    bus->queueEvent(std::make_shared<TestEvent>(EventTrigger::LEFT_CLICK, EventType::SCREEN_CHANGE));
+    bus->queueEvent(buttonEvent);
 }
 void Button::sendButtonScreenChangeEvent()
 {
-    bus->queueEvent(std::make_shared<TestEvent>(EventTrigger::LEFT_CLICK, EventType::SCREEN_CHANGE));
+    std::cout << "Sending button event to event bus..." << std::endl;
+    if(buttonEvent)
+    {
+        bus->queueEvent(buttonEvent);
+        std::cout << "Button event sent to bus! " << typeToString(buttonEvent->type) << std::endl;
+    }
+
 }
 void Button::update()
 {
     if(this->onLeftClick())
         this->sendButtonScreenChangeEvent();
+}
+bool Button::onRightClick()
+{
+    return false;
 }

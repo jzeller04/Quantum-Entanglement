@@ -16,6 +16,7 @@ private:
 
     std::shared_ptr<EventBus> bus;
     std::shared_ptr<sf::RenderWindow> window;
+    std::shared_ptr<Event> buttonEvent;
 
 
     float m_xPos;
@@ -23,12 +24,12 @@ private:
 
     void sendButtonEvent();
 public:
-    // Button(std::string fileTexture, std::string buttonText = "");
-    Button(const std::string &fileTexture, const std::string &buttonText, float xPos, float yPos, float xSize, float ySize, float scale, std::shared_ptr<EventBus> bus, std::shared_ptr<sf::RenderWindow> window);
+    // file name for texture, button text, xPos, yPos, xSize, ySize, scale, eventBus, window
+    Button(const std::string &fileTexture, const std::string &buttonText, float xPos, float yPos, float xSize, float ySize, float scale, std::shared_ptr<EventBus> bus, std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<Event> buttonEvent );
     void createButton(std::string fileTexture, std::string buttonText = "", float xPos = 0, float yPos = 0, float xSize = 0, float ySize = 0, float scale = 1);
-    void drawButton();
-    bool onLeftClick();
-    bool onRightClick();
-    void update();
+    virtual void drawButton();
+    virtual bool onLeftClick();
+    virtual bool onRightClick();
+    virtual void update();
     void sendButtonScreenChangeEvent();
 };

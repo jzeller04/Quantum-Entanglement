@@ -10,6 +10,7 @@
 #include <screen/gameScreen.hpp>
 #include <SFML/Graphics.hpp>
 #include "screen/animatedScreen.hpp"
+#include "event/screenEvent.hpp"
 
 int main()
 {
@@ -19,10 +20,12 @@ int main()
 
     auto screenManager = std::make_shared<ScreenManager>("Screen Manager");
     bus->registerListener(screenManager);
-    std::shared_ptr<MenuScreen> mainMenu = std::make_shared<MenuScreen>(window);
-    std::shared_ptr<AnimatedScreen> pauseScreen = std::make_shared<AnimatedScreen>(SCREEN_LABEL::PAUSE_MENU, "./assets/settings", 0.01, window);
+    std::shared_ptr<MenuScreen> mainMenu = std::make_shared<MenuScreen>(window, SCREEN_LABEL::MAIN_MENU, "testBackground.png");
+    std::shared_ptr<MenuScreen> pauseScreen = std::make_shared<MenuScreen>(window, SCREEN_LABEL::SETTINGS_MENU, "settings/settings1.png");
+    //std::shared_ptr<AnimatedScreen> pauseScreen = std::make_shared<AnimatedScreen>(SCREEN_LABEL::PAUSE_MENU, "./assets/settings", 0.5, window);
 
-    mainMenu->createAndAddButtonToScreen("testButton.png", "Test Button!", 100, 100, 1, 1, 1, bus);
+    mainMenu->createAndAddButtonToScreen("button/testButton.png", "Test Button!", 100, 100, 1, 1, 1, bus, std::make_shared<ScreenChangeEvent>(SCREEN_LABEL::SETTINGS_MENU));
+    pauseScreen->createAndAddButtonToScreen("button/testButton.png", "Test Button!", 800, 100, 1, 1, 1, bus, std::make_shared<ScreenChangeEvent>(SCREEN_LABEL::MAIN_MENU));
 
     screenManager->registerScreen(mainMenu);
     screenManager->registerScreen(pauseScreen);
@@ -45,22 +48,7 @@ int main()
         window->clear();
         screenManager->renderScreen();
         screenManager->updateScreen(dt);
-        if(true)
-        {
-            // auto screenChangeEvent = std::make_shared<TestEvent>(EventTrigger::LEFT_CLICK, EventType::SCREEN_CHANGE);
-            // bus->queueEvent(screenChangeEvent);
-            leftClickHandle = false;
-            if(screenManager->getCurrentScreen() == mainMenu)
-            {
-                screenManager->setNextScreenByLabel(SCREEN_LABEL::PAUSE_MENU); // buttons need access to screen manager
-            }
-            if(screenManager->getCurrentScreen() != mainMenu)
-                screenManager->setNextScreenByLabel(SCREEN_LABEL::MAIN_MENU);
-        }
-        if(!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
-            leftClickHandle = true;
 
-        //window.draw(shape);
         window->display();
     }
 }

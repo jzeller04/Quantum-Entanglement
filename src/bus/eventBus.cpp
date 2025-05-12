@@ -29,10 +29,12 @@ void EventBus::releaseEvents()
     {
         auto event = m_eventQueue.front(); // store and then pop
         m_eventQueue.pop();
+        std::cout << "Releasing event: [" << typeToString(event->type) << "] [" << triggerToString(event->trigger) << "]" << std::endl;
         for(auto& listener : m_eventListeners)
         {
             if(listener->shouldActOnEvent(event))
                 listener->onEventTrigger(event);
+                std::cout << "Triggering event: [" << typeToString(event->type) << "] [" << triggerToString(event->trigger) << "]" << std::endl;
         }
 
         

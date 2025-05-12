@@ -3,7 +3,7 @@
 sf::Texture qe::textureFromString(std::string fileName)
 {
     sf::Texture returnTexture;
-    returnTexture.loadFromFile("./assets/button/" + fileName);
+    returnTexture.loadFromFile("./assets/" + fileName);
     return returnTexture;
 }
 bool qe::leftClick()

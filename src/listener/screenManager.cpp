@@ -1,4 +1,5 @@
 #include "listener/screenManager.hpp"
+#include "event/screenEvent.hpp"
 
 
 
@@ -53,7 +54,16 @@ void ScreenManager::onEventTrigger(const std::shared_ptr<Event> &event)
 {
     std::cout << "Event Triggered! Event Info: ";
     printf("[%s] | [%s]\n", triggerToString(event->getTrigger()).c_str(), typeToString(event->getType()).c_str());
-    this->changeScreenToNext();
+    if (shouldActOnEvent(event)) // technically, this is already handled in the bus. remove this. this is bad.
+    {
+        auto screenEvent = std::static_pointer_cast<ScreenChangeEvent>(event);
+        
+        std::cout << "Setting next screen by label: " << labelToString(screenEvent->label);
+        this->setNextScreenByLabel(screenEvent->label);
+        std::cout << "Next screen by label set to: " << labelToString(this->getNextScreen()->getLabel());
+        this->changeScreenToNext();
+    }
+
 }
 
 bool ScreenManager::shouldActOnEvent(const std::shared_ptr<Event> &event) const
