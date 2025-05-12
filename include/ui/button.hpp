@@ -10,9 +10,9 @@
 class Button
 {
 private:
-    sf::Texture buttonTexture;
+    std::shared_ptr<sf::Texture> buttonTexture;
     sf::Sprite buttonSprite;
-    sf::Text buttonText;
+    //sf::Text buttonText;
 
     std::shared_ptr<EventBus> bus;
     std::shared_ptr<sf::RenderWindow> window;

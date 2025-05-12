@@ -1,9 +1,11 @@
 #include "util/util.hpp"
 
-sf::Texture qe::textureFromString(std::string fileName)
+std::shared_ptr<sf::Texture> qe::textureFromString(std::string fileName)
 {
-    sf::Texture returnTexture;
-    returnTexture.loadFromFile("./assets/" + fileName);
+    auto returnTexture = std::make_shared<sf::Texture>();
+    if (!returnTexture->loadFromFile("./assets/"+fileName)) {
+        std::cerr << "Failed to load texture: " << fileName << "\n";
+    }
     return returnTexture;
 }
 bool qe::leftClick()

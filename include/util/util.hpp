@@ -1,10 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <string>
+#include <iostream>
+#include <memory>
 namespace qe
 {
-    // filename must be in assets/button
-    sf::Texture textureFromString(std::string fileName);
+    // filename must be in assets/
+    std::shared_ptr<sf::Texture> textureFromString(std::string fileName);
 
     bool leftClick();
     bool rightClick();
