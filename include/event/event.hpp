@@ -12,7 +12,8 @@ enum class EventTrigger
 {
     LEFT_CLICK,
     RIGHT_CLICK,
-    BUS_REGISTER
+    BUS_REGISTER,
+    BUTTON
 
 };
 

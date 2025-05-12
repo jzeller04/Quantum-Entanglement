@@ -33,7 +33,7 @@ Button::Button(const std::string &fileTexture, const std::string &buttonText, fl
 
 bool Button::onLeftClick() // rename this shit
 {
-    return qe::leftClick() && qe::withinBounds(buttonSprite.getPosition().x, buttonSprite.getPosition().x + buttonTexture.getSize().x, buttonSprite.getPosition().y, buttonSprite.getPosition().x + buttonTexture.getSize().y, *window);
+    return qe::leftClick() && qe::withinBounds(buttonSprite.getPosition().x, buttonSprite.getPosition().x + buttonTexture.getSize().x, buttonSprite.getPosition().y, buttonSprite.getPosition().y + buttonTexture.getSize().y, window);
 }
 
 void Button::sendButtonEvent()
@@ -53,7 +53,11 @@ void Button::sendButtonScreenChangeEvent()
 void Button::update()
 {
     if(this->onLeftClick())
-        this->sendButtonScreenChangeEvent();
+    {
+        // if(buttonEvent->type == EventType::SCREEN_CHANGE)
+                this->sendButtonEvent();
+    }
+
 }
 bool Button::onRightClick()
 {

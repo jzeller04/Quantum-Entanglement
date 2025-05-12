@@ -58,9 +58,9 @@ void ScreenManager::onEventTrigger(const std::shared_ptr<Event> &event)
     {
         auto screenEvent = std::static_pointer_cast<ScreenChangeEvent>(event);
         
-        std::cout << "Setting next screen by label: " << labelToString(screenEvent->label);
+        std::cout << "Setting next screen by label: " << labelToString(screenEvent->label) << std::endl;
         this->setNextScreenByLabel(screenEvent->label);
-        std::cout << "Next screen by label set to: " << labelToString(this->getNextScreen()->getLabel());
+        std::cout << "Next screen by label set to: " << labelToString(this->getNextScreen()->getLabel()) << std::endl;
         this->changeScreenToNext();
     }
 

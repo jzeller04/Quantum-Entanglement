@@ -14,9 +14,9 @@ bool qe::rightClick()
 {
     return sf::Mouse::isButtonPressed(sf::Mouse::Button::Right);
 }
-bool qe::withinBounds(float x1, float x2, float y1, float y2, sf::Window &window)
+bool qe::withinBounds(float x1, float x2, float y1, float y2, std::shared_ptr<sf::RenderWindow> window)
 {
-    int xPos = sf::Mouse::getPosition(window).x;
-    int yPos = sf::Mouse::getPosition(window).y;
+    int xPos = sf::Mouse::getPosition(*window).x;
+    int yPos = sf::Mouse::getPosition(*window).y;
     return (xPos > x1 && xPos < x2) && (yPos > y1 && yPos < y2);
 }

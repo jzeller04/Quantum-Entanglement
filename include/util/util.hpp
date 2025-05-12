@@ -9,5 +9,5 @@ namespace qe
     bool leftClick();
     bool rightClick();
 
-    bool withinBounds(float x1, float x2, float y1, float y2, sf::Window &window);
+    bool withinBounds(float x1, float x2, float y1, float y2, std::shared_ptr<sf::RenderWindow> window);
 }

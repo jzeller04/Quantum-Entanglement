@@ -19,7 +19,8 @@ SRC = main.cpp \
       src/screen/animatedScreen.cpp \
       src/ui/button.cpp \
       src/util/util.cpp \
-      src/event/screenEvent.cpp
+      src/event/screenEvent.cpp \
+      src/listener/lostEventListener.cpp
 
 TARGET = engine.exe
 
