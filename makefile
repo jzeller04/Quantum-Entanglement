@@ -2,25 +2,25 @@
 
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -IC:/Libraries/SFML-3.0.0/include -Iinclude
+CXXFLAGS = -IC:/Libraries/SFML-3.0.0/include -Iinclude/engine
 LDFLAGS = -LC:/Libraries/SFML-3.0.0/lib -lsfml-graphics -lsfml-window -lsfml-system
 
 # Sources and target
 SRC = main.cpp \
-      src/event/event.cpp \
-      src/event/testEvent.cpp \
-      src/listener/testListener.cpp \
-      src/listener/listener.cpp \
-      src/bus/eventBus.cpp \
-      src/listener/screenManager.cpp \
-      src/screen/menuScreen.cpp \
-      src/screen/gameScreen.cpp \
-      src/screen/screen.cpp \
-      src/screen/animatedScreen.cpp \
-      src/ui/button.cpp \
-      src/util/util.cpp \
-      src/event/screenEvent.cpp \
-      src/listener/lostEventListener.cpp
+      src/engine/event/event.cpp \
+      src/engine/event/testEvent.cpp \
+      src/engine/listener/testListener.cpp \
+      src/engine/listener/listener.cpp \
+      src/engine/bus/eventBus.cpp \
+      src/engine/listener/screenManager.cpp \
+      src/engine/screen/menuScreen.cpp \
+      src/engine/screen/gameScreen.cpp \
+      src/engine/screen/screen.cpp \
+      src/engine/screen/animatedScreen.cpp \
+      src/engine/ui/button.cpp \
+      src/engine/util/util.cpp \
+      src/engine/event/screenEvent.cpp \
+      src/engine/listener/lostEventListener.cpp
 
 TARGET = engine.exe
 

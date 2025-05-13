@@ -6,6 +6,8 @@
                 "${workspaceFolder}/**",
                 "${vcpkgRoot}/x64-windows/include",
                 "${workspaceFolder}/include",
+                "${workspaceFolder}/include/engine",
+                "${workspaceFolder}/include/game",
                 "C:\\Libraries\\SFML-3.0.0\\include",
                 "C:\\Libraries\\SFML-3.0.0\\lib"
             ],

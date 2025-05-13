@@ -10,7 +10,7 @@ class MenuScreen : public Screen
 private:
     sf::Texture backgroundTexture;
     sf::Sprite backgroundSprite; // sprite loads onto texture
-    std::vector<Button> buttons;
+    std::vector<std::shared_ptr<Button>> buttons;
     //std::shared_ptr<ScreenManager> manager;
 public:
     MenuScreen(std::shared_ptr<sf::RenderWindow> window, SCREEN_LABEL label, const std::string &fileName);

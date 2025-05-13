@@ -6,7 +6,7 @@ MenuScreen::MenuScreen(std::shared_ptr<sf::RenderWindow> window, SCREEN_LABEL la
     this->window = window;
     std::cout << "Menu screen registered: [" << labelToString(label) << "]" << std::endl;
     //backgroundTexture.loadFromFile("./assets/testBackground.png", true);
-    if(!backgroundTexture.loadFromFile("./assets/" + fileName, true))
+    if(!backgroundTexture.loadFromFile("./assets/" + fileName))
         std::cerr << "Error loading image" << std::endl;
     backgroundSprite.setTexture(backgroundTexture, true);
 }
@@ -22,14 +22,14 @@ void MenuScreen::onExit()
 void MenuScreen::update(float dt)
 {
     for(auto &button : buttons)
-        button.update();
+        button->update();
 }
 
 void MenuScreen::renderWindow()
 {
     window->draw(backgroundSprite);
     for(auto buttonToDraw : buttons)
-        buttonToDraw.drawButton();
+        buttonToDraw->drawButton();
 }
 
 void MenuScreen::handleEvent(const std::shared_ptr<Event> &event)
@@ -38,11 +38,11 @@ void MenuScreen::handleEvent(const std::shared_ptr<Event> &event)
 
 void MenuScreen::addButtonToScreen(Button button)
 {
-    buttons.emplace_back(button);
+    buttons.emplace_back(std::make_shared<Button>(button));
 }
 
 void MenuScreen::createAndAddButtonToScreen(const std::string &fileTexture, const std::string &buttonText, float xPos, float yPos, float xSize, float ySize, float scale, std::shared_ptr<EventBus> bus, std::shared_ptr<Event> buttonEvent)
 {
     Button newButton(fileTexture, buttonText, xPos, yPos, xSize, ySize, scale, bus, window, buttonEvent);
-    buttons.emplace_back(newButton);
+    buttons.emplace_back(std::make_shared<Button>(newButton));
 }

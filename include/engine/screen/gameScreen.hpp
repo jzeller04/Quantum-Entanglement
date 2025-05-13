@@ -6,7 +6,7 @@
 class GameScreen : public Screen
 {
 private:
-    sf::Texture backgroundTexture;
+    std::shared_ptr<sf::Texture> backgroundTexture;
     sf::Sprite backgroundSprite; // sprite loads onto texture
 public:
     GameScreen();

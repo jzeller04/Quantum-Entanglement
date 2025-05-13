@@ -20,11 +20,12 @@ int main()
 
     auto screenManager = std::make_shared<ScreenManager>("Screen Manager");
     bus->registerListener(screenManager);
-    std::shared_ptr<MenuScreen> mainMenu = std::make_shared<MenuScreen>(window, SCREEN_LABEL::MAIN_MENU, "testBackground.png");
+    std::shared_ptr<MenuScreen> mainMenu = std::make_shared<MenuScreen>(window, SCREEN_LABEL::MAIN_MENU, "menu/mainmenu.png");
     std::shared_ptr<MenuScreen> pauseScreen = std::make_shared<MenuScreen>(window, SCREEN_LABEL::SETTINGS_MENU, "settings/settings1.png");
     //std::shared_ptr<AnimatedScreen> pauseScreen = std::make_shared<AnimatedScreen>(SCREEN_LABEL::PAUSE_MENU, "./assets/settings", 0.5, window);
     auto testEvent = std::make_shared<TestEvent>(EventTrigger::RIGHT_CLICK, EventType::SOUNDEVENT);
-    mainMenu->createAndAddButtonToScreen("button/testButton.png", "Test Button!", 100, 100, 1, 1, 1, bus, std::make_shared<ScreenChangeEvent>(SCREEN_LABEL::SETTINGS_MENU));
+    mainMenu->createAndAddButtonToScreen("button/testButton.png", "Test Button!", 960, 400, 1, 1, 1, bus, std::make_shared<ScreenChangeEvent>(SCREEN_LABEL::SETTINGS_MENU));
+    mainMenu->createAndAddButtonToScreen("button/testButton.png", "Test Button!", 960, 800, 1, 1, 1, bus, std::make_shared<ScreenChangeEvent>(SCREEN_LABEL::SETTINGS_MENU));
     pauseScreen->createAndAddButtonToScreen("button/testButton.png", "Test Button!", 800, 100, 1, 1, 1, bus, std::make_shared<ScreenChangeEvent>(SCREEN_LABEL::MAIN_MENU));
     pauseScreen->createAndAddButtonToScreen("button/testButton.png", "Test Button!", 1500, 800, 1, 1, 1, bus, testEvent);
 

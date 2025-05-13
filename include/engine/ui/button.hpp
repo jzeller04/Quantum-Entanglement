@@ -14,6 +14,8 @@ private:
     sf::Sprite buttonSprite;
     //sf::Text buttonText;
 
+    bool pressedLastFrame = false;
+
     std::shared_ptr<EventBus> bus;
     std::shared_ptr<sf::RenderWindow> window;
     std::shared_ptr<Event> buttonEvent;
