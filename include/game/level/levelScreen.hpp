@@ -2,16 +2,14 @@
 #include <memory>
 #include "screen/screen.hpp"
 #include <vector>
+#include "entity/entity.hpp"
 
-
-class Entity; // tdl
-
-class LevelScreen : Screen
+class LevelScreen : public Screen
 {
 private:
     std::vector<std::shared_ptr<Entity>> m_entities;
     std::shared_ptr<sf::Texture> m_backgroundTexture;
-    std::shared_ptr<sf::Sprite> m_backgroundSprite = nullptr;
+    std::shared_ptr<sf::Sprite> m_backgroundSprite;
 
     void load();
 
@@ -23,5 +21,5 @@ public:
     void onExit() override;
     void renderWindow() override;
     void handleEvent(const std::shared_ptr<Event> &event) override;
-    void addEntity();
+    void addEntity(std::shared_ptr<Entity> entityToAdd);
 };
