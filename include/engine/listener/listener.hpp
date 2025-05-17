@@ -12,9 +12,9 @@ public:
     EventListener(std::string name);
     virtual ~EventListener() = default;
 
-    virtual void onEventTrigger(const std::shared_ptr<Event>& event) = 0;
+    virtual void onEventTrigger(const Event& event) = 0;
 
-    virtual bool shouldActOnEvent(const std::shared_ptr<Event>& event) const {return true;};
+    virtual bool shouldActOnEvent(const Event& event) const {return true;};
 
     std::string getName();
 };

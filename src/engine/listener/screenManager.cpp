@@ -50,25 +50,24 @@ void ScreenManager::changeScreenToNext()
     safeToChange = true;
 }
 
-void ScreenManager::onEventTrigger(const std::shared_ptr<Event> &event)
+void ScreenManager::onEventTrigger(const Event &event)
 {
     std::cout << "Event Triggered! Event Info: ";
-    printf("[%s] | [%s]\n", triggerToString(event->getTrigger()).c_str(), typeToString(event->getType()).c_str());
+    printf("[%s] | [%s]\n", triggerToString(event.getTrigger()).c_str(), typeToString(event.getType()).c_str());
     if (shouldActOnEvent(event)) // technically, this is already handled in the bus. remove this. this is bad.
     {
-        auto screenEvent = std::static_pointer_cast<ScreenChangeEvent>(event);
-        
-        std::cout << "Setting next screen by label: " << labelToString(screenEvent->label) << std::endl;
-        this->setNextScreenByLabel(screenEvent->label);
-        std::cout << "Next screen by label set to: " << labelToString(this->getNextScreen()->getLabel()) << std::endl;
-        this->changeScreenToNext();
+        const auto& screenEvent = static_cast<const ScreenChangeEvent&>(event);
+                std::cout << "Setting next screen by label: " << labelToString(screenEvent.label) << std::endl;
+                this->setNextScreenByLabel(screenEvent.label);
+                std::cout << "Next screen by label set to: " << labelToString(this->getNextScreen()->getLabel()) << std::endl;
+                this->changeScreenToNext();   
     }
 
 }
 
-bool ScreenManager::shouldActOnEvent(const std::shared_ptr<Event> &event) const
+bool ScreenManager::shouldActOnEvent(const Event &event) const
 {
-    return event->getType() == EventType::SCREEN_CHANGE;
+    return event.getType() == EventType::SCREEN_CHANGE;
 }
 
 std::shared_ptr<Screen> ScreenManager::getCurrentScreen()

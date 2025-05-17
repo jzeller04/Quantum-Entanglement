@@ -20,6 +20,7 @@ void Button::drawButton()
 Button::Button(const std::string &fileTexture, const std::string &buttonText, float xPos, float yPos, float xSize, float ySize, float scale, std::shared_ptr<EventBus> bus, std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<Event> buttonEvent) : buttonTexture(qe::textureFromString(fileTexture)), buttonSprite(*buttonTexture)//, buttonText(myFont)
 {
     this->buttonEvent = buttonEvent;
+    std::cout << typeToString(buttonEvent->type) << std::endl;
     this->window = window;
     this->bus = bus;
     this->buttonSprite.setTexture(*buttonTexture);
@@ -43,11 +44,8 @@ void Button::sendButtonEvent()
 void Button::sendButtonScreenChangeEvent()
 {
     std::cout << "Sending button event to event bus..." << std::endl;
-    if(buttonEvent)
-    {
         bus->queueEvent(buttonEvent);
         std::cout << "Button event sent to bus! " << typeToString(buttonEvent->type) << std::endl;
-    }
 
 }
 void Button::update()

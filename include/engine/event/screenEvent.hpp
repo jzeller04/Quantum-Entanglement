@@ -5,7 +5,7 @@ class ScreenChangeEvent : public Event
 {
 public:
     ScreenChangeEvent();
-    ScreenChangeEvent(std::shared_ptr<Event> event);
+    ScreenChangeEvent(const Event &event);
     ScreenChangeEvent(SCREEN_LABEL label);
     SCREEN_LABEL label;
 };

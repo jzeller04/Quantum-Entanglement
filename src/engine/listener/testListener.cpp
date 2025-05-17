@@ -10,11 +10,11 @@ int TestListener::getListenerData()
 {
     return data;
 }
-void TestListener::onEventTrigger(const std::shared_ptr<Event> &event)
+void TestListener::onEventTrigger(const Event &event)
 {
     std::cout << "Hello from event bus!" << std::endl;
 }
-bool TestListener::shouldActOnEvent(const std::shared_ptr<Event> &event) const
+bool TestListener::shouldActOnEvent(const Event &event) const
 {
-    return event->getTrigger() == EventTrigger::BUS_REGISTER;
+    return event.getTrigger() == EventTrigger::BUS_REGISTER;
 }

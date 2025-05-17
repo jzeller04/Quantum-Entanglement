@@ -16,6 +16,6 @@ private:
 public:
     EventBus();
     void registerListener(const std::shared_ptr<EventListener>& eventListener);
-    void queueEvent(const std::shared_ptr<Event> &event);
+    void queueEvent(std::shared_ptr<Event> event);
     void releaseEvents();
 };

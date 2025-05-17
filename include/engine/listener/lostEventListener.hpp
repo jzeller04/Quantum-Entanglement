@@ -8,5 +8,5 @@ private:
 
 public:
     LostEventHandler();
-    void printEventInfo(const std::shared_ptr<Event> &event);
+    void printEventInfo(const Event &event);
 };

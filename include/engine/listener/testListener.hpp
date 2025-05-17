@@ -9,7 +9,7 @@ private:
 public:
     TestListener(int data);
     int getListenerData();
-    void onEventTrigger(const std::shared_ptr<Event>& event) override;
-    bool shouldActOnEvent(const std::shared_ptr<Event> &event) const override;
+    void onEventTrigger(const Event& event) override;
+    bool shouldActOnEvent(const Event &event) const override;
 };
 

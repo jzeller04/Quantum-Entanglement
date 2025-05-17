@@ -8,9 +8,9 @@ EventBus::EventBus()
     this->m_lostEventHandler = std::make_unique<LostEventHandler>();
     //TestListener busListener(0);
     auto busListener = std::make_shared<TestListener>(0);
-    auto busEvent = std::make_shared<TestEvent>(EventTrigger::BUS_REGISTER, EventType::REGISTER);
+    TestEvent busEvent(EventTrigger::BUS_REGISTER, EventType::REGISTER);
     m_eventListeners.emplace_back(busListener);
-    m_eventQueue.push(busEvent);
+    m_eventQueue.push(std::make_shared<Event>(busEvent));
 }
 
 void EventBus::registerListener(const std::shared_ptr<EventListener> &eventListener)
@@ -19,7 +19,7 @@ void EventBus::registerListener(const std::shared_ptr<EventListener> &eventListe
     std::cout << "Registered: " << eventListener->getName() << std::endl;
 }
 
-void EventBus::queueEvent(const std::shared_ptr<Event> &event)
+void EventBus::queueEvent(std::shared_ptr<Event> event)
 {
     m_eventQueue.push(event);
 }
@@ -34,17 +34,17 @@ void EventBus::releaseEvents()
         bool lost = true;
         for(auto& listener : m_eventListeners)
         {
-            if(listener->shouldActOnEvent(event))
+            if(listener->shouldActOnEvent(*event))
             {
                 lost = false;
-                listener->onEventTrigger(event);
+                listener->onEventTrigger(*event);
                 std::cout << "Triggering event: [" << typeToString(event->type) << "] [" << triggerToString(event->trigger) << "]" << std::endl;
             }
 
         }
         if(lost)
         {
-            m_lostEventHandler->printEventInfo(event);
+            m_lostEventHandler->printEventInfo(*event);
         }
         
     }
