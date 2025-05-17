@@ -7,7 +7,8 @@ Entity::Entity() :
     x = 100;
     y = 100;
     rotationAngle = sf::degrees(0);
-    scale = 1;
+    xscale = 1;
+    yscale = 1;
 }
 Entity::Entity(std::string fileTexture) : 
     m_texture(std::make_shared<sf::Texture>())
@@ -15,20 +16,42 @@ Entity::Entity(std::string fileTexture) :
     x = 100;
     y = 100;
     rotationAngle = sf::degrees(0);
-    scale = 1;
+    xscale = 1;
+    yscale = 1;
     std::cout << "Entity Creating...";
-    m_texture->loadFromFile(fileTexture);
-    m_sprite = std::make_shared<sf::Sprite>(*m_texture);
+    if(m_texture->loadFromFile(fileTexture))
+    {
+        std::cout << "File: [" << fileTexture << "] Loaded successfully" << std::endl;
+        m_sprite = std::make_shared<sf::Sprite>(*m_texture);
+    }
+    else
+    {
+        std::cout << "File: [" << fileTexture << "] failed to load successfully" << std::endl;
+    }
+
     std::cout << " Created!" << std::endl;
 }
 void Entity::render(std::shared_ptr<sf::RenderWindow> &window)
 {
     m_sprite->setPosition({x, y});
-    m_sprite->setScale({scale, scale});
-    m_sprite->setRotation(rotationAngle);
+    m_sprite->setScale({xscale, yscale});
+    sf::FloatRect bounds = m_sprite->getLocalBounds();
+    if (xscale == -1)
+        m_sprite->setOrigin({bounds.size.x, bounds.size.y / 2.f});
+    else
+        m_sprite->setOrigin({0, bounds.size.y / 2.f});
+        m_sprite->setRotation(rotationAngle);
     window->draw(*m_sprite);
 }
 void Entity::update(float dt)
 {
     x++;
+}
+void Entity::flip(int flip)
+{
+    this->m_sprite->setScale({flip*xscale, yscale});
+}
+void Entity::undoFlip()
+{
+    this->m_sprite->setTextureRect(sf::IntRect({0, 0}, {this->m_texture->getSize().x, this->m_texture->getSize().y}));
 }

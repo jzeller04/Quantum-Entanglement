@@ -22,7 +22,8 @@ SRC = main.cpp \
       src/engine/event/screenEvent.cpp \
       src/engine/listener/lostEventListener.cpp \
       src/game/entity/entity.cpp \
-      src/game/level/levelScreen.cpp
+      src/game/level/levelScreen.cpp \
+      src/game/entity/player/playerEntity.cpp
 
 TARGET = engine.exe
 
