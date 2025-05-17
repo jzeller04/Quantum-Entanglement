@@ -3,56 +3,37 @@
 void PlayerEntity::update(float dt)
 {
     // all game moving logic
-    if(qe::upArrow())
-    {
-        //y = (y - 5) + yvelocity;
-        yvelocity -= 0.05;
-        yvelocity -= yvelocity*dt;
+    if (qe::upArrow())
+        yvelocity -= 0.05f;
+
+    if (qe::downArrow())
+        yvelocity += 0.05f;
+
+    if (qe::leftArrow()) {
+        xvelocity -= 0.05f;
+        if (!leftLastFrame) xscale = -1;
     }
 
-    if(qe::downArrow())
-    {
-        //y = (y + 5) + yvelocity;
-        yvelocity += 0.05;
-        yvelocity += yvelocity*dt;
-    }
-       
-     if (qe::leftArrow())
-    {
-        //x = (x - 5) + xvelocity;
-        xvelocity -= 0.05;
-        xvelocity -= xvelocity*dt;
-        if (!leftLastFrame)
-        {
-            xscale = -1; // Flip left
-
-            // Adjust origin if needed:
-            //m_sprite->setOrigin(m_sprite->getLocalBounds().size.x);
-        }
+    if (qe::rightArrow()) {
+        xvelocity += 0.05f;
+        if (!rightLastFrame) xscale = 1;
     }
 
-    if (qe::rightArrow())
-    {
-        //x = (x + 5) + xvelocity;
-        xvelocity += 0.05;
-        xvelocity += xvelocity*dt;
-        if (!rightLastFrame)
-        {
-            xscale = 1;
-        }
-    }
-    if(qe::spaceBar())
-    {
+    if (qe::spaceBar()) {
         x = 960;
         y = 540;
+        xvelocity = 0;
+        yvelocity = 0;
     }
-        
-    
-    y += yvelocity;
-    x += xvelocity;
 
-    // Update previous frame values
-    leftLastFrame = qe::leftArrow();
-    rightLastFrame = qe::rightArrow();
+    // closer to 1, less friction
+    float friction = 1.0f;
+    xvelocity -= friction * xvelocity * dt;
+    yvelocity -= friction * yvelocity * dt;
+
+    // Apply motion
+    x += xvelocity;
+    y += yvelocity;
+
 }
 
