@@ -3,11 +3,13 @@
 #include "screen/screen.hpp"
 #include <vector>
 #include "entity/entity.hpp"
+#include "entity/player/playerEntity.hpp"
 
 class LevelScreen : public Screen
 {
 private:
     std::vector<std::shared_ptr<Entity>> m_entities;
+    std::shared_ptr<PlayerEntity> m_player;
     std::shared_ptr<sf::Texture> m_backgroundTexture;
     std::shared_ptr<sf::Sprite> m_backgroundSprite;
 

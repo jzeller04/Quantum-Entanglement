@@ -21,6 +21,7 @@ void LevelScreen::update(float dt)
 {
     for(auto &entities : m_entities)
         entities->update(dt);
+    m_player->update(dt);
 }
 
 void LevelScreen::renderWindow()
@@ -28,6 +29,7 @@ void LevelScreen::renderWindow()
     window->draw(*m_backgroundSprite);
     for(auto &entities : m_entities)
         entities->render(window);
+    m_player->render(window);
 }
 void LevelScreen::addEntity(std::shared_ptr<Entity> entityToAdd)
 {
@@ -36,7 +38,7 @@ void LevelScreen::addEntity(std::shared_ptr<Entity> entityToAdd)
 
 void LevelScreen::onEnter()
 {
-
+    this->m_player = std::make_shared<PlayerEntity>("./assets/entity/player/playerDefault.png");
 }
 void LevelScreen::onExit()
 {

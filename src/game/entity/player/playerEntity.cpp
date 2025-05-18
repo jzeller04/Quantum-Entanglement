@@ -26,8 +26,8 @@ void PlayerEntity::update(float dt)
         yvelocity = 0;
     }
 
-    // closer to 1, less friction
-    float friction = 1.0f;
+    // closer to 0, less friction
+    float friction = 0.0f;
     xvelocity -= friction * xvelocity * dt;
     yvelocity -= friction * yvelocity * dt;
 
@@ -37,3 +37,4 @@ void PlayerEntity::update(float dt)
 
 }
 
+//

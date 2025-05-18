@@ -24,16 +24,15 @@ int main()
     std::shared_ptr<MenuScreen> mainMenu = std::make_shared<MenuScreen>(window, SCREEN_LABEL::MAIN_MENU, "menu/mainmenu.png");
     std::shared_ptr<MenuScreen> pauseScreen = std::make_shared<MenuScreen>(window, SCREEN_LABEL::PAUSE_MENU, "settings/settings1.png");
     std::shared_ptr<LevelScreen> levelScreen = std::make_shared<LevelScreen>(window, SCREEN_LABEL::LEVEL_SCREEN_1,"grid.png");
-    levelScreen->addEntity(std::make_shared<PlayerEntity>("./assets/entity/player/playerDefault.png")); // change this path... in the code
     //std::shared_ptr<AnimatedScreen> pauseScreen = std::make_shared<AnimatedScreen>(SCREEN_LABEL::PAUSE_MENU, "./assets/settings", 0.5, window);
     std::shared_ptr<Event> event1 = std::make_shared<ScreenChangeEvent>(SCREEN_LABEL::PAUSE_MENU);
     std::shared_ptr<Event> event2 = std::make_shared<ScreenChangeEvent>(SCREEN_LABEL::LEVEL_SCREEN_1);
     std::shared_ptr<Event> event3 = std::make_shared<ScreenChangeEvent>(SCREEN_LABEL::MAIN_MENU);
 
     //ScreenChangeEvent event3(SCREEN_LABEL::MAIN_MENU);
-    mainMenu->createAndAddButtonToScreen("button/play_button.png", "Test Button!", 960, 400, 1, 1, 1, bus, event1);
-    pauseScreen->createAndAddButtonToScreen("button/testButton.png", "Test Button!", 800, 400, 1, 1, 1, bus, event3);
-    pauseScreen->createAndAddButtonToScreen("button/testButton.png", "Test Button!", 1500, 800, 1, 1, 1, bus, event2);
+    mainMenu->createAndAddButtonToScreen("button/play_button.png", "Test Button!", 960, 400, 1, 1, 1, bus, event2);
+    // pauseScreen->createAndAddButtonToScreen("button/testButton.png", "Test Button!", 800, 400, 1, 1, 1, bus, event3);
+    // pauseScreen->createAndAddButtonToScreen("button/testButton.png", "Test Button!", 1500, 800, 1, 1, 1, bus, event2);
 
     screenManager->registerScreen(mainMenu);
     screenManager->registerScreen(pauseScreen);
