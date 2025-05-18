@@ -13,6 +13,7 @@
 #include "event/screenEvent.hpp"
 #include "level/levelScreen.hpp"
 #include "entity/player/playerEntity.hpp"
+#include <SFML/Audio.hpp>
 int main()
 {
     auto window = std::make_shared<sf::RenderWindow>(sf::VideoMode({1920,1080}), "QE");
