@@ -30,6 +30,7 @@ Button::Button(const std::string &fileTexture, const std::string &buttonText, fl
     //this->buttonText.setFillColor(sf::Color(00000));
     buttonSprite.setPosition({xPos, yPos});
     buttonSprite.setScale({xSize, ySize});
+    soundEvent = std::make_shared<SoundEvent>("click.wav");
 }
 
 bool Button::onLeftClick() // rename this shit
@@ -40,6 +41,7 @@ bool Button::onLeftClick() // rename this shit
 void Button::sendButtonEvent()
 {
     bus->queueEvent(buttonEvent);
+    bus->queueEvent(soundEvent);
 }
 void Button::sendButtonScreenChangeEvent()
 {
@@ -52,8 +54,7 @@ void Button::update()
 {
     if(this->onLeftClick())
     {
-        // if(buttonEvent->type == EventType::SCREEN_CHANGE)
-                this->sendButtonEvent();
+        this->sendButtonEvent();
     }
     pressedLastFrame = qe::leftClick();
 
@@ -61,4 +62,8 @@ void Button::update()
 bool Button::onRightClick()
 {
     return false;
+}
+void Button::setButtonSound(std::shared_ptr<SoundEvent> soundEvent)
+{
+    this->soundEvent = soundEvent;
 }

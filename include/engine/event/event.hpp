@@ -5,7 +5,8 @@ enum class EventType
 {
     SCREEN_CHANGE,
     REGISTER,
-    SOUNDEVENT
+    SOUNDEVENT,
+    MUSICEVENT
 };
 
 enum class EventTrigger

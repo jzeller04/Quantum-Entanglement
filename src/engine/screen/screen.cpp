@@ -1,9 +1,11 @@
 #include "screen/screen.hpp"
 
 
-Screen::Screen(SCREEN_LABEL label)
+Screen::Screen(SCREEN_LABEL label, std::shared_ptr<EventBus> eventBus)
 {
     this->label = label;
+    this->bus = eventBus;
+    m_music = std::make_shared<MusicEvent>("track1.wav");
 }
 SCREEN_LABEL Screen::getLabel()
 {
@@ -25,6 +27,14 @@ std::string labelToString(SCREEN_LABEL label)
     default: return "NO_LABEL"; break;
 
     }
+}
+void Screen::setMusic(std::shared_ptr<MusicEvent> musicEvent)
+{
+    this->m_music = musicEvent;
+}
+void Screen::playMusic()
+{
+    bus->queueEvent(m_music);
 }
 
 

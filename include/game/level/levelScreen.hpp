@@ -17,7 +17,7 @@ private:
 
     // implement leveldata
 public:
-    LevelScreen(std::shared_ptr<sf::RenderWindow> window, SCREEN_LABEL label, const std::string &fileName);
+    LevelScreen(std::shared_ptr<sf::RenderWindow> window, SCREEN_LABEL label, const std::string &fileName, std::shared_ptr<EventBus> eventBus);
     void update(float dt) override;
     void onEnter() override;
     void onExit() override;

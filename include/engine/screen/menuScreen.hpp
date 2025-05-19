@@ -13,7 +13,7 @@ private:
     std::vector<Button> buttons;
     //std::shared_ptr<ScreenManager> manager;
 public:
-    MenuScreen(std::shared_ptr<sf::RenderWindow> window, SCREEN_LABEL label, const std::string &fileName);
+    MenuScreen(std::shared_ptr<sf::RenderWindow> window, SCREEN_LABEL label, const std::string &fileName, std::shared_ptr<EventBus> eventBus);
     void onEnter() override;
     void onExit() override;
     void update(float dt) override;

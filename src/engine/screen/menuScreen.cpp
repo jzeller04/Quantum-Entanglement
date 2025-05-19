@@ -1,6 +1,6 @@
 #include "screen/menuScreen.hpp"
 
-MenuScreen::MenuScreen(std::shared_ptr<sf::RenderWindow> window, SCREEN_LABEL label, const std::string &fileName) : backgroundSprite(backgroundTexture), Screen(label)
+MenuScreen::MenuScreen(std::shared_ptr<sf::RenderWindow> window, SCREEN_LABEL label, const std::string &fileName, std::shared_ptr<EventBus> eventBus) : backgroundSprite(backgroundTexture), Screen(label, eventBus)
 {
     //this->manager;
     this->window = window;

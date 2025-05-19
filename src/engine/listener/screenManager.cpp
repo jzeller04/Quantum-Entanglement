@@ -19,6 +19,7 @@ void ScreenManager::setNextScreenByLabel(SCREEN_LABEL label)
     if(screenRegistry.at(label))
     {
         nextScreen = screenRegistry.at(label);
+        nextScreen->playMusic();
         return;
     }
     std::cout << "Screen: " << labelToString(label) << " Not in screen registry! Please make sure it is registered before you call this!" << std::endl;

@@ -6,6 +6,7 @@
 #include <iostream>
 #include "bus/eventBus.hpp"
 #include "event/testEvent.hpp"
+#include "event/soundEvent.hpp"
 
 class Button
 {
@@ -20,6 +21,7 @@ private:
     std::shared_ptr<sf::RenderWindow> window;
     //std::shared_ptr<Event> buttonEvent;
     std::shared_ptr<Event> buttonEvent;
+    std::shared_ptr<SoundEvent> soundEvent;
 
 
     float m_xPos;
@@ -34,5 +36,6 @@ public:
     virtual bool onLeftClick();
     virtual bool onRightClick();
     virtual void update();
+    void setButtonSound(std::shared_ptr<SoundEvent> soundEvent);
     void sendButtonScreenChangeEvent();
 };

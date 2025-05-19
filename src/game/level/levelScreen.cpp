@@ -3,7 +3,7 @@
 void LevelScreen::load()
 {
 }
-LevelScreen::LevelScreen(std::shared_ptr<sf::RenderWindow> window, SCREEN_LABEL label, const std::string &fileName) : Screen(label),
+LevelScreen::LevelScreen(std::shared_ptr<sf::RenderWindow> window, SCREEN_LABEL label, const std::string &fileName, std::shared_ptr<EventBus> eventBus) : Screen(label, eventBus),
       m_backgroundTexture(std::make_shared<sf::Texture>())
 {
     std::cout << "Level Screen creating...";

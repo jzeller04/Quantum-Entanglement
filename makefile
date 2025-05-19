@@ -3,7 +3,7 @@
 # Compiler and flags
 CXX = g++
 CXXFLAGS = -IC:/Libraries/SFML-3.0.0/include -Iinclude/engine -Iinclude/game
-LDFLAGS = -LC:/Libraries/SFML-3.0.0/lib -lsfml-graphics -lsfml-window -lsfml-system
+LDFLAGS = -LC:/Libraries/SFML-3.0.0/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 # Sources and target
 SRC = main.cpp \
@@ -14,7 +14,6 @@ SRC = main.cpp \
       src/engine/bus/eventBus.cpp \
       src/engine/listener/screenManager.cpp \
       src/engine/screen/menuScreen.cpp \
-      src/engine/screen/gameScreen.cpp \
       src/engine/screen/screen.cpp \
       src/engine/screen/animatedScreen.cpp \
       src/engine/ui/button.cpp \
@@ -23,7 +22,11 @@ SRC = main.cpp \
       src/engine/listener/lostEventListener.cpp \
       src/game/entity/entity.cpp \
       src/game/level/levelScreen.cpp \
-      src/game/entity/player/playerEntity.cpp
+      src/game/entity/player/playerEntity.cpp \
+      src/engine/listener/soundListener.cpp \
+      src/engine/event/soundEvent.cpp \
+      src/engine/event/musicEvent.cpp \
+      src/engine/listener/musicListener.cpp
 
 TARGET = engine.exe
 
