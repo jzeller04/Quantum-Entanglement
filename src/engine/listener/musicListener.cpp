@@ -12,6 +12,7 @@ void MusicListener::onEventTrigger(const Event &event)
         if(m_music.openFromFile(musicEvent.getFileName()))
         {
             m_music.play();
+            m_music.setVolume(7.0f);
             m_music.setLooping(musicEvent.loop);
             std::cout << "Music file [" << musicEvent.getFileName() << "] loaded successfully!\n";
         }

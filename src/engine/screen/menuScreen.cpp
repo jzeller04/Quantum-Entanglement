@@ -30,6 +30,8 @@ void MenuScreen::renderWindow()
     window->draw(backgroundSprite);
     for(auto buttonToDraw : buttons)
         buttonToDraw.drawButton();
+    for(auto sprites : m_xtraSprites)
+        window->draw(*sprites);
 }
 
 void MenuScreen::handleEvent(const std::shared_ptr<Event> &event)
@@ -45,4 +47,21 @@ void MenuScreen::createAndAddButtonToScreen(const std::string &fileTexture, cons
 {
     Button newButton(fileTexture, buttonText, xPos, yPos, xSize, ySize, scale, bus, window, buttonEvent);
     buttons.emplace_back(newButton);
+}
+
+void MenuScreen::addScreenSprite(const std::string &filename, float x, float y, float scale)
+{
+    std::shared_ptr<sf::Texture> newTexture = std::make_shared<sf::Texture>();
+    if (newTexture->loadFromFile("./assets/menu/" + filename))
+    {
+        m_xtraTextures.emplace_back(newTexture); // <- Keep texture alive (thank you gippity! was unaware of this pointer interaction...)
+        auto newSprite = std::make_shared<sf::Sprite>(*newTexture);
+        newSprite->setPosition({x,y});
+        newSprite->setScale({scale,scale});
+        m_xtraSprites.emplace_back(newSprite);
+    }
+    else
+    {
+        std::cout << "Image: [" << filename << "] failed to load!" << std::endl;
+    }
 }

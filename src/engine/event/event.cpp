@@ -20,6 +20,7 @@ std::string typeToString(EventType type)
     case EventType::SCREEN_CHANGE: return "SCREEN_CHANGE"; break;
     case EventType::REGISTER: return "REGISTER"; break;
     case EventType::SOUNDEVENT: return "SOUNDEVENT"; break;
+    case EventType::MUSICEVENT: return "MUSICEVENT"; break;
     default:
         return "NO_TYPE";
         break;

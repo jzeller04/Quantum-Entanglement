@@ -14,6 +14,7 @@
 #include "entity/player/playerEntity.hpp"
 #include "listener/soundListener.hpp"
 #include "listener/musicListener.hpp"
+
 int main()
 {
     auto window = std::make_shared<sf::RenderWindow>(sf::VideoMode({1920,1080}), "QE");
@@ -27,7 +28,7 @@ int main()
     bus->registerListener(soundListener);
     bus->registerListener(screenManager);
     std::shared_ptr<MenuScreen> mainMenu = std::make_shared<MenuScreen>(window, SCREEN_LABEL::MAIN_MENU, "menu/mainmenu.png", bus);
-    std::shared_ptr<MenuScreen> pauseScreen = std::make_shared<MenuScreen>(window, SCREEN_LABEL::PAUSE_MENU, "settings/settings1.png", bus);
+    std::shared_ptr<MenuScreen> saveScreen = std::make_shared<MenuScreen>(window, SCREEN_LABEL::SAVE_MENU, "settings/settings1.png", bus);
     std::shared_ptr<LevelScreen> levelScreen = std::make_shared<LevelScreen>(window, SCREEN_LABEL::LEVEL_SCREEN_1,"grid.png", bus);
     //std::shared_ptr<AnimatedScreen> pauseScreen = std::make_shared<AnimatedScreen>(SCREEN_LABEL::PAUSE_MENU, "./assets/settings", 0.5, window);
     std::shared_ptr<Event> event1 = std::make_shared<ScreenChangeEvent>(SCREEN_LABEL::PAUSE_MENU);
@@ -35,17 +36,19 @@ int main()
     std::shared_ptr<Event> event3 = std::make_shared<ScreenChangeEvent>(SCREEN_LABEL::MAIN_MENU);
 
     //ScreenChangeEvent event3(SCREEN_LABEL::MAIN_MENU);
-    mainMenu->createAndAddButtonToScreen("button/play_button.png", "Test Button!", 960, 400, 1, 1, 1, bus, event2);
+    mainMenu->createAndAddButtonToScreen("button/play_button_tmp.png", "Test Button!", 707, 684, 1, 1, 1, bus, event2);
     // pauseScreen->createAndAddButtonToScreen("button/testButton.png", "Test Button!", 800, 400, 1, 1, 1, bus, event3);
     // pauseScreen->createAndAddButtonToScreen("button/testButton.png", "Test Button!", 1500, 800, 1, 1, 1, bus, event2);
 
     screenManager->registerScreen(mainMenu);
-    screenManager->registerScreen(pauseScreen);
+    screenManager->registerScreen(saveScreen);
     screenManager->registerScreen(levelScreen);
+
+    levelScreen->setMusic("track2.wav");
+    //mainMenu->addScreenSprite("mainmenusprite1.png",200,400,1);
 
     screenManager->setScreen(mainMenu);
 
-    bool leftClickHandle = true; // this could most definetely be a handler class of some kind. Im going to need more than just one handler.
     sf::Clock clock;
     while (window->isOpen())
     {

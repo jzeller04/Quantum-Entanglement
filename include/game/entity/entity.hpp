@@ -16,8 +16,6 @@ public:
     Entity(std::string fileTexture);
     virtual void update(float dt);
     void render(std::shared_ptr<sf::RenderWindow> &window);
-    void flip(int flip);
-    void undoFlip();
     // virtual void enter();
     // virtual void exit();
 protected:

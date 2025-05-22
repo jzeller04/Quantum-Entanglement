@@ -12,11 +12,11 @@ private:
     std::unordered_map<SCREEN_LABEL ,std::shared_ptr<Screen>> screenRegistry;
     bool safeToChange = false;
 public:
-    void setNextScreen(std::shared_ptr<Screen> screen);
-    void setNextScreenAndChange(std::shared_ptr<Screen> screen);
+    void setNextScreen(const std::shared_ptr<Screen> &screen);
+    void setNextScreenAndChange(const std::shared_ptr<Screen> &screen);
     void setNextScreenByLabel(SCREEN_LABEL label);
     //only use on init.
-    void setScreen(std::shared_ptr<Screen> screen);
+    void setScreen(const std::shared_ptr<Screen> &screen);
     void updateScreen(float dt);
     void renderScreen();
     void changeScreenToNext();

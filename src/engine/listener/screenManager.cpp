@@ -5,12 +5,12 @@
 
 
 ScreenManager::~ScreenManager() = default;
-void ScreenManager::setNextScreenAndChange(std::shared_ptr<Screen> screen)
+void ScreenManager::setNextScreenAndChange(const std::shared_ptr<Screen> &screen)
 {
     this->setNextScreen(screen);
     safeToChange = true;
 }
-void ScreenManager::setNextScreen(std::shared_ptr<Screen> screen)
+void ScreenManager::setNextScreen(const std::shared_ptr<Screen> &screen)
 {
     nextScreen = screen;
 }
@@ -19,14 +19,14 @@ void ScreenManager::setNextScreenByLabel(SCREEN_LABEL label)
     if(screenRegistry.at(label))
     {
         nextScreen = screenRegistry.at(label);
-        nextScreen->playMusic();
         return;
     }
     std::cout << "Screen: " << labelToString(label) << " Not in screen registry! Please make sure it is registered before you call this!" << std::endl;
 }
-void ScreenManager::setScreen(std::shared_ptr<Screen> screen)
+void ScreenManager::setScreen(const std::shared_ptr<Screen> &screen)
 {
     currentScreen = screen;
+    currentScreen->playMusic();
 }
 void ScreenManager::updateScreen(float dt) 
 {
@@ -35,6 +35,7 @@ void ScreenManager::updateScreen(float dt)
         currentScreen->onExit();
         currentScreen = nextScreen;
         currentScreen->onEnter();
+        nextScreen->playMusic();
         safeToChange = false;
     }
     currentScreen->update(dt);

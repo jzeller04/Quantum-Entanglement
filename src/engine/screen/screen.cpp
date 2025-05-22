@@ -32,6 +32,11 @@ void Screen::setMusic(std::shared_ptr<MusicEvent> musicEvent)
 {
     this->m_music = musicEvent;
 }
+void Screen::setMusic(const std::string &filename)
+{
+    this->m_music = std::make_shared<MusicEvent>(filename);
+    
+}
 void Screen::playMusic()
 {
     bus->queueEvent(m_music);

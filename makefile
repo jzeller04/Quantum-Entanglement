@@ -2,7 +2,7 @@
 
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -IC:/Libraries/SFML-3.0.0/include -Iinclude/engine -Iinclude/game
+CXXFLAGS = -IC:/Libraries/SFML-3.0.0/include -Iinclude/engine -Iinclude/game -IC:/Libraries/ModernJson
 LDFLAGS = -LC:/Libraries/SFML-3.0.0/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 # Sources and target

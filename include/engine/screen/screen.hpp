@@ -13,6 +13,7 @@ enum class SCREEN_LABEL
     PAUSE_MENU,
     SETTINGS_MENU,
     LEVEL_SCREEN_1,
+    SAVE_MENU,
     NO_LABEL
 
 };
@@ -33,6 +34,7 @@ public:
     virtual ~Screen();
     Screen(SCREEN_LABEL label, std::shared_ptr<EventBus> eventBus);
     void setMusic(std::shared_ptr<MusicEvent> musicEvent);
+    void setMusic(const std::string &filename);
     
 protected:
     std::shared_ptr<EventBus> bus;

@@ -47,11 +47,3 @@ void Entity::update(float dt)
 {
     x++;
 }
-void Entity::flip(int flip)
-{
-    this->m_sprite->setScale({flip*xscale, yscale});
-}
-void Entity::undoFlip()
-{
-    this->m_sprite->setTextureRect(sf::IntRect({0, 0}, {this->m_texture->getSize().x, this->m_texture->getSize().y}));
-}

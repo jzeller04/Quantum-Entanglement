@@ -74,6 +74,8 @@
         "xutility": "cpp",
         "queue": "cpp",
         "ranges": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "numeric": "cpp",
+        "valarray": "cpp"
     }
 }

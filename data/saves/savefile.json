@@ -1,0 +1,15 @@
+{
+    "save": "save1",
+    "created": "1/1/1",
+    "lastplayed": "1/1/1",
+    "progressInfo":
+    {
+        "energy": 123123,
+        "networth": 123123,
+        "threshholds": ["one","two"]
+    },
+    "playerStats":
+    {
+        "speed": 1
+    }
+}
