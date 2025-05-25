@@ -26,7 +26,9 @@ SRC = main.cpp \
       src/engine/listener/soundListener.cpp \
       src/engine/event/soundEvent.cpp \
       src/engine/event/musicEvent.cpp \
-      src/engine/listener/musicListener.cpp
+      src/engine/listener/musicListener.cpp \
+      src/game/save/playerData/playerData.cpp \
+      src/game/quantumEntanglement.cpp
 
 TARGET = engine.exe
 

@@ -24,12 +24,12 @@ public:
     virtual ~Event() = default;
     Event() = default;
 
-    EventTrigger trigger;
-    EventType type;
 
     virtual EventType getType() const {return this->type;};
     virtual EventTrigger getTrigger() const {return this->trigger;};
 
+    EventTrigger trigger;
+    EventType type;
 };
 
 

@@ -76,6 +76,7 @@
         "ranges": "cpp",
         "span": "cpp",
         "numeric": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "fstream": "cpp"
     }
 }
