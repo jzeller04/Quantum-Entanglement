@@ -44,7 +44,7 @@ void ScreenManager::updateScreen(float dt)
 void ScreenManager::renderScreen()
 {
     if(currentScreen)
-        currentScreen->renderWindow();
+        currentScreen->renderWindow(m_camera);
 }
 
 void ScreenManager::changeScreenToNext()

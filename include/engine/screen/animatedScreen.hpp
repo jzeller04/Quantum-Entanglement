@@ -20,6 +20,6 @@ public:
     void onEnter() override;
     void onExit() override;
     void update(float dt) override;
-    void renderWindow() override;
+    void renderWindow(std::shared_ptr<sf::View> camera) override;
     void handleEvent(const std::shared_ptr<Event> &event) override;
 };

@@ -11,6 +11,7 @@ private:
     std::shared_ptr<Screen> nextScreen;
     std::unordered_map<SCREEN_LABEL ,std::shared_ptr<Screen>> screenRegistry;
     bool safeToChange = false;
+    std::shared_ptr<sf::View> m_camera;
 public:
     void setNextScreen(const std::shared_ptr<Screen> &screen);
     void setNextScreenAndChange(const std::shared_ptr<Screen> &screen);
@@ -27,7 +28,7 @@ public:
 
     void registerScreen(std::shared_ptr<Screen> screenToRegister);
 
-    ScreenManager(std::string name) : EventListener(name){};
+    ScreenManager(std::string name, std::shared_ptr<sf::View> camera) : EventListener(name), m_camera(camera){};
     ~ScreenManager();
 
 };

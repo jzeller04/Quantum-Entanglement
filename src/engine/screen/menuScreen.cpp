@@ -25,7 +25,7 @@ void MenuScreen::update(float dt)
         button.update();
 }
 
-void MenuScreen::renderWindow()
+void MenuScreen::renderWindow(std::shared_ptr<sf::View> camera)
 {
     window->draw(backgroundSprite);
     for(auto buttonToDraw : buttons)

@@ -11,10 +11,19 @@ LevelScreen::LevelScreen(std::shared_ptr<sf::RenderWindow> window, SCREEN_LABEL 
         std::cerr << "Failed to load background texture!" << std::endl;
         // You might want to handle the failure more gracefully.
     }
+    m_backgroundTexture->setRepeated(true);
     m_backgroundSprite = std::make_shared<sf::Sprite>(*m_backgroundTexture);
     //this->m_backgroundSprite->setTexture(*m_backgroundTexture);
     this->window = window;
     std::cout<< " Created!" << std::endl;
+
+
+    // may want to have a seperate class for this so i can do more shit with it... in fact yeah not that im thinkin about it that is what im gonna need to do. TDL!!!!!
+
+
+    map = sf::RectangleShape(sf::Vector2f(256000,144000));
+    map.setTexture(m_backgroundTexture.get());
+    map.setTextureRect(sf::IntRect({0,0},{256000,144000}));
 }
 
 void LevelScreen::update(float dt)
@@ -24,9 +33,10 @@ void LevelScreen::update(float dt)
     m_player->update(dt);
 }
 
-void LevelScreen::renderWindow()
+void LevelScreen::renderWindow(std::shared_ptr<sf::View> camera)
 {
-    window->draw(*m_backgroundSprite);
+    camera->setCenter(m_player->getPos());
+    window->draw(map);
     for(auto &entities : m_entities)
         entities->render(window);
     m_player->render(window);

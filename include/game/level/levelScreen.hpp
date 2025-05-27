@@ -13,6 +13,8 @@ private:
     std::shared_ptr<sf::Texture> m_backgroundTexture;
     std::shared_ptr<sf::Sprite> m_backgroundSprite;
 
+    sf::RectangleShape map;
+
     void load();
 
     // implement leveldata
@@ -21,7 +23,7 @@ public:
     void update(float dt) override;
     void onEnter() override;
     void onExit() override;
-    void renderWindow() override;
+    void renderWindow(std::shared_ptr<sf::View> camera) override;
     void handleEvent(const std::shared_ptr<Event> &event) override;
     void addEntity(std::shared_ptr<Entity> entityToAdd);
 };

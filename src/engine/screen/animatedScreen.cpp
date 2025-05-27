@@ -58,7 +58,7 @@ void AnimatedScreen::update(float dt)
     }
 }
 
-void AnimatedScreen::renderWindow()
+void AnimatedScreen::renderWindow(std::shared_ptr<sf::View> camera)
 {
     window->draw(m_backgroundSprite);
 }

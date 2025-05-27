@@ -16,6 +16,7 @@
 #include "listener/soundListener.hpp"
 #include "listener/musicListener.hpp"
 #include "save/playerData/playerData.hpp"
+#include "entity/particle/electron.hpp"
 
 
 class QuantumEntanglement
@@ -26,6 +27,7 @@ private:
     std::shared_ptr<EventBus> m_bus;
     sf::Clock m_clock;
     std::shared_ptr<ScreenManager> m_screenManager;
+    std::shared_ptr<sf::View> m_camera;
 public:
     QuantumEntanglement();
     void init();

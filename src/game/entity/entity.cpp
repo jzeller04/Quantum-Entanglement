@@ -13,7 +13,7 @@ Entity::Entity() :
 Entity::Entity(std::string fileTexture) : 
     m_texture(std::make_shared<sf::Texture>())
 {
-    x = 100;
+    x = 100; // need entity spawning logic
     y = 100;
     rotationAngle = sf::degrees(0);
     xscale = 1;
@@ -45,5 +45,11 @@ void Entity::render(std::shared_ptr<sf::RenderWindow> &window)
 }
 void Entity::update(float dt)
 {
-    x++;
+    x += .5;
+    y += .5;
+}
+
+sf::Vector2f Entity::getPos()
+{
+    return {this->x, this->y};
 }

@@ -2,6 +2,7 @@
 
 QuantumEntanglement::QuantumEntanglement()
 {
+    srand(time(NULL));
     qe::PlayerData newData;
     qe::loadPlayerData(newData);
     m_playerSave = std::make_shared<qe::PlayerData>(newData);
@@ -10,7 +11,9 @@ QuantumEntanglement::QuantumEntanglement()
     m_window->setFramerateLimit(144);
     m_bus = std::make_shared<EventBus>();
 
-    m_screenManager = std::make_shared<ScreenManager>("Screen Manager");
+    m_camera = std::make_shared<sf::View>(sf::FloatRect({0,0},{2560,1440}));
+
+    m_screenManager = std::make_shared<ScreenManager>("Screen Manager", m_camera);
     auto soundListener = std::make_shared<SoundListener>();
     auto musicListener = std::make_shared<MusicListener>();
     m_bus->registerListener(musicListener);
@@ -29,7 +32,16 @@ QuantumEntanglement::QuantumEntanglement()
     mainMenu->createAndAddButtonToScreen("button/play_button_tmp.png", "Test Button!", 707, 684, 1, 1, 1, m_bus, event1);
     // pauseScreen->createAndAddButtonToScreen("button/testButton.png", "Test Button!", 800, 400, 1, 1, 1, bus, event3);
     // pauseScreen->createAndAddButtonToScreen("button/testButton.png", "Test Button!", 1500, 800, 1, 1, 1, bus, event2);
-    saveScreen->createAndAddButtonToScreen("button/testButton.png","",400,400,1,1,1, m_bus, saveEvent);
+    saveScreen->createAndAddButtonToScreen("button/testButton.png","",400,400,1,1,1, m_bus, event2);
+
+
+    for(int i = 0; i < 50; i++)
+    {
+        auto entitytoadd = std::make_shared<ElectronEntity>("./assets/entity/player/playerDefault.png", sf::Vector2f(500 + i*90,500+i*120));
+        levelScreen->addEntity(entitytoadd);
+    }
+
+
 
     m_screenManager->registerScreen(mainMenu);
     m_screenManager->registerScreen(saveScreen);
@@ -55,7 +67,9 @@ void QuantumEntanglement::run()
         }
         m_bus->releaseEvents();
 
+
         m_window->clear();
+        m_window->setView(*m_camera);
         m_screenManager->renderScreen();
         m_screenManager->updateScreen(dt);
 

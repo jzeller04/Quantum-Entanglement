@@ -28,7 +28,8 @@ SRC = main.cpp \
       src/engine/event/musicEvent.cpp \
       src/engine/listener/musicListener.cpp \
       src/game/save/playerData/playerData.cpp \
-      src/game/quantumEntanglement.cpp
+      src/game/quantumEntanglement.cpp \
+      src/game/entity/particle/electron.cpp
 
 TARGET = engine.exe
 

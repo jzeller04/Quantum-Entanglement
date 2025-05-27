@@ -15,9 +15,10 @@ public:
     Entity();
     Entity(std::string fileTexture);
     virtual void update(float dt);
-    void render(std::shared_ptr<sf::RenderWindow> &window);
+    virtual void render(std::shared_ptr<sf::RenderWindow> &window);
     // virtual void enter();
     // virtual void exit();
+    sf::Vector2f getPos();
 protected:
     float x;
     float y;

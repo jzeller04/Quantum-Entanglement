@@ -10,7 +10,7 @@ void qe::savePlayerData(PlayerData &playerData)
 {
     json j;
     j = playerData;
-    std::cout << j << std::endl;
+    // std::cout << j << std::endl;
     std::ofstream file("./data/saves/" + playerData.saveName + ".json");
     if(file.is_open())
     {

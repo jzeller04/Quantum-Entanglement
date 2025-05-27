@@ -28,7 +28,7 @@ public:
     virtual void onExit() = 0; // handle destruction of everything that was on the screen if its not still being used
     virtual void handleEvent(const std::shared_ptr<Event> &event) = 0;
     virtual void update(float dt) = 0;
-    virtual void renderWindow() = 0;  // use in onEnter  
+    virtual void renderWindow(std::shared_ptr<sf::View> camera) = 0;  // use in onEnter  
     SCREEN_LABEL getLabel();
     virtual void playMusic();
     virtual ~Screen();

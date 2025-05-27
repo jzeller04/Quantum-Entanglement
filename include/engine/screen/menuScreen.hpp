@@ -19,7 +19,7 @@ public:
     void onEnter() override;
     void onExit() override;
     void update(float dt) override;
-    void renderWindow() override;
+    void renderWindow(std::shared_ptr<sf::View> camera) override;
     void handleEvent(const std::shared_ptr<Event> &event) override;
     void addButtonToScreen(Button button);
     void createAndAddButtonToScreen(const std::string &fileTexture, const std::string &buttonText, float xPos, float yPos, float xSize, float ySize, float scale, std::shared_ptr<EventBus> bus, std::shared_ptr<Event> buttonEvent);
