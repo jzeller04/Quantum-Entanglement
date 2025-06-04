@@ -19,3 +19,4 @@ public:
     void queueEvent(std::shared_ptr<Event> event);
     void releaseEvents();
 };
+
