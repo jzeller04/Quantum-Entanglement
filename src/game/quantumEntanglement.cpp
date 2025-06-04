@@ -5,6 +5,15 @@ QuantumEntanglement::QuantumEntanglement()
     srand(time(NULL));
     qe::PlayerData newData;
     qe::loadPlayerData(newData);
+    newData.lastPlayed = "gsfdgs";
+    newData.saveName = "test save";
+    newData.timeCreated = "now";
+    newData.playerStats.size = 1;
+    newData.playerStats.speed = 1;
+    newData.progress.energy = 57248572485;
+    newData.progress.threshholds.emplace_back(qe::Threshholds::START);
+    newData.progress.worth = 452453245; 
+    qe::savePlayerData(newData);
     m_playerSave = std::make_shared<qe::PlayerData>(newData);
 
     m_window = std::make_shared<sf::RenderWindow>(sf::VideoMode({2560,1440}), "QE");
