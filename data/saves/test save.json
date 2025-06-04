@@ -1,16 +1,16 @@
 {
-    "created": "1/1/1",
-    "lastplayed": "1/1/1",
+    "created": "now",
+    "lastplayed": "gsfdgs",
     "playerstats": {
         "size": 1.0,
         "speed": 1.0
     },
     "progressinfo": {
-        "energy": 1000,
-        "networth": 1000,
+        "energy": 1413997637,
+        "networth": 452453245,
         "threshholds": [
             0
         ]
     },
-    "save": "New Save"
+    "save": "test save"
 }
